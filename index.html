@@ -1,29 +1,42 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 <link rel="stylesheet" type="text/css" href="src/css/style.css">
 <title> Thermostat </title>
+<script src="lib/jasmine-2.3.4/jquery-2.1.4.min.js"> </script>
 </head>
 
 <body>
 
-<h1>Thermo-stat</h1>
-<p id="demo">A Paragraph.</p>
-
-<button type="button" onclick="upButton()">Up</button>
-<button type="button" onclick="downButton()">Down</button>
-
-<script src="lib/jasmine-2.3.4/jquery-2.1.4.min.js"> </script>
 <script src="src/javascripts/Thermostat.js"> </script>
+<script src="src/javascripts/app.js"> </script>
 
-<script>
-$( document ).ready(function() {
-  $( "a" ).click(function( event ) {
-    alert( "The link will no longer take you to jquery.com" );
-    event.preventDefault();
-  });
-});
+<h1>Thermo-stat</h1>
+
+<div> <p id="content"></p> </div>
+
+<script> 
+
+var thermostat = new Thermostat;
+
+Thermostat.prototype.up = function() {
+  var temp = document.getElementById("content");
+  thermostat.upButton()
+  temp.innerHTML = thermostat.temperature;  
+}
+
+Thermostat.prototype.down = function() {
+  var temp = document.getElementById("content");
+  thermostat.downButton()
+  temp.innerHTML = thermostat.temperature;  
+}
+
 </script>
 
+<button type="button" onclick="javascript:thermostat.up()">Up</button>
+<button type="button" onclick="javascript:thermostat.down()">Down</button>
+
 </body>
-</html> 
+
+</html>

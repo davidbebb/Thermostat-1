@@ -4,39 +4,20 @@
 <head>
 <link rel="stylesheet" type="text/css" href="src/css/style.css">
 <title> Thermostat </title>
-<script src="lib/jasmine-2.3.4/jquery-2.1.4.min.js"> </script>
 </head>
 
 <body>
 
-<script src="src/javascripts/Thermostat.js"> </script>
-<script src="src/javascripts/app.js"> </script>
-
 <h1>Thermo-stat</h1>
 
-<div> <p id="content"></p> </div>
+<div> <p id="thermostat_counter"></p> </div>
 
-<script> 
-
-var thermostat = new Thermostat;
-
-Thermostat.prototype.up = function() {
-  var temp = document.getElementById("content");
-  thermostat.upButton()
-  temp.innerHTML = thermostat.temperature;  
-}
-
-Thermostat.prototype.down = function() {
-  var temp = document.getElementById("content");
-  thermostat.downButton()
-  temp.innerHTML = thermostat.temperature;  
-}
-
-</script>
-
-<button type="button" onclick="javascript:thermostat.up()">Up</button>
-<button type="button" onclick="javascript:thermostat.down()">Down</button>
+<button type="button" onclick="thermostat.up();thermostat.changeColor()">Up</button>
+<button type="button" onclick="thermostat.down();thermostat.changeColor()">Down</button>
+<button type="button" onclick="thermostat.reset();thermostat.changeColor()">Reset</button>
 
 </body>
-
+<script src="src/javascripts/Thermostat.js"> </script>
+<script src="src/javascripts/app.js"> </script>
+<script src="lib/jasmine-2.3.4/jquery-2.1.4.min.js"> </script>
 </html>

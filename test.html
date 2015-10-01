@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <script src="lib/jasmine-2.3.4/jquery-2.1.4.min.js"></script>
+  <script src="src/javascripts/Thermostat.js"></script>
+
+  <p id="demo"></p>
+
+  <script>
+    thermostat = new Thermostat;
+    document.getElementById("demo").innerHTML = thermostat.temperature;
+  </script>
+
+</body>
+
+</html>

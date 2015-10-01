@@ -1,28 +1,48 @@
 var thermostat = new Thermostat;
 
-document.getElementById("thermostat_counter").innerHTML = thermostat.temperature ;
-var elem = document.getElementById("thermostat_counter");
-elem.style.color = thermostat.colour();
-
 Thermostat.prototype.up = function() {
-  var temp = document.getElementById("thermostat_counter");
-  thermostat.upButton()
-  temp.innerHTML = thermostat.temperature;  
-}
+  thermostat.upButton();
+  thermostat.setTemperatureReadout(thermostat.temperature);
+};
 
 Thermostat.prototype.down = function() {
-  var temp = document.getElementById("thermostat_counter");
-  thermostat.downButton()
-  temp.innerHTML = thermostat.temperature;  
-}
+  thermostat.downButton();
+  thermostat.setTemperatureReadout(thermostat.temperature);
+};
 
 Thermostat.prototype.reset = function() {
-  var temp = document.getElementById("thermostat_counter");
-  thermostat.resetTemperature()
-  temp.innerHTML = thermostat.temperature;  
-}
+  thermostat.resetTemperature();
+  thermostat.setTemperatureReadout(thermostat.temperature);
+};
 
 Thermostat.prototype.changeColor = function() {
-  var elem = document.getElementById("thermostat_counter");
+  var elem = document.getElementById('thermostat_counter');
   elem.style.color = thermostat.colour();
-}
+};
+
+Thermostat.prototype.htmlPowerSave = function() {
+  thermostat.setPowerSaveReadout();
+  thermostat.setTemperatureReadout(thermostat.temperature);
+
+};
+
+Thermostat.prototype.setTemperatureReadout = function(temperature) {
+  document.getElementById('thermostat_counter').innerHTML = temperature;
+  var elem = document.getElementById('thermostat_counter');
+  elem.style.color = thermostat.colour();
+};
+
+Thermostat.prototype.setPowerSaveReadout = function() {
+  var indicator = document.getElementById('power_save');
+  if (thermostat.powerSave === true) {
+    thermostat.powerSaveSet(false);
+    indicator.innerHTML = 'Power save is off';
+  } else {
+    thermostat.powerSaveSet(true);
+    indicator.innerHTML = 'Power save is on';
+  };
+};
+
+thermostat.powerSaveSet(false); //this is about to be reset
+thermostat.setPowerSaveReadout();
+thermostat.setTemperatureReadout(thermostat.temperature);

@@ -47,18 +47,6 @@ Thermostat.prototype.resetTemperature = function() {
   this.temperature = 20;
 };
 
-Thermostat.prototype.colour = function() {
-  if (this.temperature <= 18) {
-    return 'green';
-  };
-
-  if (this.temperature >= 25) {
-    return 'red';
-  } else {
-    return 'orange';
-  }
-};
-
 Thermostat.prototype.setTemperature = function(temp) {
   this.temperature = temp;
 };
